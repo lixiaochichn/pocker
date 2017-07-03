@@ -1,0 +1,81 @@
+/*style.css*/
+
+* {     : border-box; }
+
+html, body { height: 100%; }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: seagreen;
+}
+
+.card {
+  width: 200px;
+  height: 280px;
+  cursor: pointer; /*光标呈现为指示链接的指针（一只手）*/
+  perspective: 1000px; /*定义3D元素的视图距离*/
+}
+
+.card-inner {
+  width: inherit;
+  height: inherit;
+  transition: .3s;
+  position: relative; /*相对定位*/
+  transform-style: preserve-3d;  /*	子元素将保留其 3D 位置。*/
+}
+
+.card:hover .card-inner, .card.hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  position: absolute; /*决定定位*/
+  border: 1px solid #ccc;
+  backface-visibility: hidden; /*隐藏被旋转的 div 元素的背面*/
+}
+
+.card-back {
+  transform: rotate(0);
+  background: repeating-linear-gradient(
+    45deg,
+    tomato,
+    tomato 8px,
+    white 8px,
+    white 16px
+  );
+}
+
+.card-front {
+  background: #fff;
+  transform: rotateY(180deg);
+}
+
+.card-front .icon {
+  top: 50%;
+  left: 50%;
+  font-size: 60px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.card-front .A {
+  font-size: 48px;
+  font-family: serif;
+  position: absolute;
+}
+
+.card-front .A.top {
+  top: 0;
+  left: 10px;
+}
+
+.card-front .A.btm {    
+  bottom: 0;
+  right: 10px;
+}
+
